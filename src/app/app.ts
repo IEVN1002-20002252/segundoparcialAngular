@@ -1,12 +1,25 @@
-import { Component, signal } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+// CAMBIA ESTA LÍNEA (debe terminar en /usuario en lugar de /usuario.component):
+import { UsuarioComponent } from './formulario/usuario/usuario';
+
+import { initFlowbite } from 'flowbite';
+
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    UsuarioComponent
+  ],
   templateUrl: './app.html',
+  styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('nuevo_proyecto_angular');
+export class AppComponent implements AfterViewInit {
+  title = 'segundoparcialAngular';
+
+  ngAfterViewInit(): void {
+    initFlowbite();
+  }
 }

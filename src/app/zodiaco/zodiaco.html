@@ -1,0 +1,75 @@
+<div class="max-w-4xl mx-auto my-8 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+
+  <!-- FORMULARIO IZQUIERDA -->
+  <div class="space-y-4">
+    <h3 class="text-xl font-bold text-gray-900 dark:text-white border-b pb-2 border-gray-200 dark:border-gray-700">
+      Datos Personales
+    </h3>
+
+    <div>
+      <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+      <input type="text" [(ngModel)]="nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    </div>
+
+    <div>
+      <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido Paterno</label>
+      <input type="text" [(ngModel)]="apaterno" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    </div>
+
+    <div>
+      <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellido Materno</label>
+      <input type="text" [(ngModel)]="amaterno" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    </div>
+
+    <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 pt-2">Fecha de nacimiento</h4>
+    <div class="grid grid-cols-3 gap-2">
+      <div>
+        <label class="block mb-1 text-xs font-medium text-gray-600 dark:text-gray-400">Día</label>
+        <input type="number" [(ngModel)]="dia" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      </div>
+      <div>
+        <label class="block mb-1 text-xs font-medium text-gray-600 dark:text-gray-400">Mes</label>
+        <input type="number" [(ngModel)]="mes" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      </div>
+      <div>
+        <label class="block mb-1 text-xs font-medium text-gray-600 dark:text-gray-400">Año</label>
+        <input type="number" [(ngModel)]="anio" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      </div>
+    </div>
+
+    <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 pt-2">Sexo</h4>
+    <div class="flex items-center space-x-6">
+      <div class="flex items-center">
+        <input type="radio" id="masculino" name="sexo" value="Masculino" [(ngModel)]="sexo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600">
+        <label for="masculino" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Masculino</label>
+      </div>
+      <div class="flex items-center">
+        <input type="radio" id="femenino" name="sexo" value="Femenino" [(ngModel)]="sexo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600">
+        <label for="femenino" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Femenino</label>
+      </div>
+    </div>
+
+    <button (click)="imprimir()" type="button" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-4 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      Imprimir
+    </button>
+  </div>
+
+  <!-- RESULTADO DERECHA -->
+  <div *ngIf="mostrarResultado" class="flex flex-col items-center justify-center p-6 bg-blue-50 dark:bg-gray-700 rounded-lg border border-blue-100 dark:border-gray-600 text-center space-y-3">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+      Hola <span class="text-blue-600 dark:text-blue-400 italic">{{ nombreCompleto }}</span>
+    </h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300">
+      Tienes <span class="font-bold text-gray-900 dark:text-white">{{ edad }}</span> años
+    </p>
+    <p class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+      Tu signo zodiacal chino
+    </p>
+
+    <div class="flex flex-col items-center mt-2 space-y-3">
+      <span class="text-xl font-extrabold text-blue-700 dark:text-blue-300">Es {{ signo }}</span>
+      <img [src]="imagenSigno" [alt]="signo" class="w-32 h-32 rounded-full border-4 border-white dark:border-gray-800 shadow-md object-cover">
+    </div>
+  </div>
+
+</div>
