@@ -1,17 +1,14 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
-// CAMBIA ESTA LÍNEA (debe terminar en /usuario en lugar de /usuario.component):
-import { UsuarioComponent } from './formulario/usuario/usuario';
-
+import { NavbarComponent } from './navbar/navbar';
 import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
-    UsuarioComponent
+    NavbarComponent,
+    RouterOutlet
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'
