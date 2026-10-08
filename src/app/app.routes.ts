@@ -14,6 +14,10 @@ export const routes: Routes = [
     loadComponent: () => import('./escuela/lista_alumnos').then(m => m.ListaAlumnosComponent)
   },
   {
+    path: 'escuela/cinepolis',
+    loadComponent: () => import('./escuela/cinepolis/cinepolis').then(m => m.CinepolisComponent)
+  },
+  {
     path: '',
     redirectTo: 'formulario/zodiaco',
     pathMatch: 'full'

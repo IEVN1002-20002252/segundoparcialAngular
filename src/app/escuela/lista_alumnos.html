@@ -1,60 +1,78 @@
-<div class="max-w-xl mx-auto my-8 p-6 bg-white rounded-xl shadow-md">
-  <h2 class="text-2xl font-bold mb-6 text-gray-800">Registrar Alumno</h2>
-
-  <!-- Formulario en disposición vertical -->
-  <form (ngSubmit)="agregarAlumno()" class="flex flex-col gap-4">
-    <div>
-      <label class="block text-sm font-medium text-gray-700">Matrícula</label>
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow">
+  <form [formGroup]="formulario" (ngSubmit)="agregarAlumno()">
+    <!-- Matrícula -->
+    <div class="mb-5">
+      <label for="matricula" class="block mb-2 text-sm font-medium text-gray-900">Matrícula</label>
       <input
         type="text"
-        [(ngModel)]="nuevoAlumno.matricula"
+        id="matricula"
         name="matricula"
+        formControlName="matricula"
         required
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Matricula"
       />
     </div>
 
-    <div>
-      <label class="block text-sm font-medium text-gray-700">Nombre Completo</label>
+    <!-- Nombre -->
+    <div class="mb-5">
+      <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
       <input
         type="text"
-        [(ngModel)]="nuevoAlumno.nombre"
+        id="nombre"
         name="nombre"
+        formControlName="nombre"
         required
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Nombre"
       />
     </div>
 
-    <div>
-      <label class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+    <!-- Correo -->
+    <div class="mb-5">
+      <label for="correo" class="block mb-2 text-sm font-medium text-gray-900">Correo</label>
       <input
         type="email"
-        [(ngModel)]="nuevoAlumno.correo"
+        id="correo"
         name="correo"
+        formControlName="correo"
         required
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Correo"
       />
     </div>
 
-    <div>
-      <label class="block text-sm font-medium text-gray-700">Materia</label>
+    <!-- Materia -->
+    <div class="mb-5">
+      <label for="materia" class="block mb-2 text-sm font-medium text-gray-900">Materia</label>
       <input
         type="text"
-        [(ngModel)]="nuevoAlumno.materia"
+        id="materia"
         name="materia"
+        formControlName="materia"
         required
-        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Materia"
       />
     </div>
 
-    <!-- Botón al final -->
-    <div class="pt-2">
+    <!-- Botón -->
+    <div class="flex justify-center mt-5">
       <button
         type="submit"
-        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md shadow transition-colors"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
       >
         Agregar Alumno
       </button>
     </div>
   </form>
+
+  <!-- Muestra de datos interpolados -->
+  <div class="mt-6">
+    <h1>Lista Alumno</h1>
+    <h2>Matricula: {{nuevoAlumno.matricula}}</h2>
+    <h2>Nombre: {{nuevoAlumno.nombre}}</h2>
+    <h2>Correo: {{nuevoAlumno.correo}}</h2>
+    <h2>Materia: {{nuevoAlumno.materia}}</h2>
+  </div>
 </div>

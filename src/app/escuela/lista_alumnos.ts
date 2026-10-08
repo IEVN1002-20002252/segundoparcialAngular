@@ -1,42 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-interface Alumno {
-  matricula: string;
-  nombre: string;
-  correo: string;
-  materia: string;
-}
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-lista-alumnos',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './lista_alumnos.html',
   styleUrl: './lista_alumnos.css'
 })
-export class ListaAlumnosComponent {
-  nuevoAlumno: Alumno = {
-    matricula: '',
-    nombre: '',
-    correo: '',
-    materia: ''
+export class ListaAlumnosComponent implements OnInit {
+  formulario!: FormGroup;
+
+  nuevoAlumno = {
+    matricula: 'xx',
+    nombre: 'xx',
+    correo: 'xx',
+    materia: 'xx'
   };
 
-  // Arreglo vacío listo para recibir datos
-  alumnos: Alumno[] = [];
+  ngOnInit(): void {
+    this.formulario = new FormGroup({
+      matricula: new FormControl('xx'),
+      nombre: new FormControl('xx'),
+      correo: new FormControl('xx'),
+      materia: new FormControl('xx')
+    });
+  }
 
   agregarAlumno() {
-    if (
-      this.nuevoAlumno.matricula &&
-      this.nuevoAlumno.nombre &&
-      this.nuevoAlumno.correo &&
-      this.nuevoAlumno.materia
-    ) {
-      this.alumnos.push({ ...this.nuevoAlumno });
-      // Limpiar el formulario
-      this.nuevoAlumno = { matricula: '', nombre: '', correo: '', materia: '' };
+    if (this.formulario.valid) {
+      this.nuevoAlumno = this.formulario.value;
     }
   }
 }
