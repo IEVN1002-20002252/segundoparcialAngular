@@ -1,0 +1,63 @@
+<div class="max-w-4xl mx-auto my-8 p-6 bg-blue-900 text-white rounded-lg shadow-xl border-2 border-blue-700">
+  <div class="text-center mb-6">
+    <h1 class="text-3xl font-extrabold italic tracking-wider text-yellow-400">Registro de Compras - Cinépolis</h1>
+    <p class="text-sm tracking-widest text-blue-200">HISTORIAL DE BOLETAS VENDIDAS</p>
+  </div>
+
+  <div class="overflow-x-auto bg-blue-800 p-4 rounded-md border border-blue-400 mb-6">
+    <table class="w-full text-sm text-left text-white">
+      <thead class="text-xs uppercase bg-blue-950 text-yellow-400">
+        <tr>
+          <th scope="col" class="px-4 py-3">Nombre</th>
+          <th scope="col" class="px-4 py-3">Compradores</th>
+          <th scope="col" class="px-4 py-3">Tarjeta Cineco</th>
+          <th scope="col" class="px-4 py-3">Boletas</th>
+          <th scope="col" class="px-4 py-3">Total Pagado</th>
+          <th scope="col" class="px-4 py-3 text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of registrosCompras; let i = index" class="border-b border-blue-700 bg-blue-900 hover:bg-blue-950">
+          <td class="px-4 py-4 font-medium">{{ item.nombre }}</td>
+          <td class="px-4 py-4">{{ item.compradores }}</td>
+          <td class="px-4 py-4 uppercase">{{ item.tarjeta }}</td>
+          <td class="px-4 py-4">{{ item.boletas }}</td>
+          <td class="px-4 py-4 font-bold text-yellow-300">{{ item.total | currency }}</td>
+          <td class="px-4 py-4 text-center flex justify-center gap-2">
+            <!-- Botón Editar -->
+            <button 
+              type="button" 
+              (click)="editarRegistro(i)" 
+              class="font-medium text-white bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded cursor-pointer text-xs"
+            >
+              Editar
+            </button>
+            <!-- Botón Eliminar -->
+            <button 
+              type="button" 
+              (click)="eliminarRegistro(i)" 
+              class="font-medium text-white bg-red-600 hover:bg-red-700 px-3 py-1 rounded cursor-pointer text-xs"
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+        <!-- Mensaje si no hay registros -->
+        <tr *ngIf="registrosCompras.length === 0">
+          <td colspan="6" class="px-4 py-4 text-center text-blue-200">No hay compras registradas todavía.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Botón de Regresar abajo -->
+  <div class="text-center">
+    <button
+      type="button"
+      (click)="regresar()"
+      class="bg-yellow-400 hover:bg-yellow-500 text-blue-950 font-bold py-2 px-8 rounded shadow transition-colors cursor-pointer"
+    >
+      Regresar a Cinépolis
+    </button>
+  </div>
+</div>
