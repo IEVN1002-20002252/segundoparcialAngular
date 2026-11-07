@@ -1,0 +1,49 @@
+<div class="max-w-6xl mx-auto mt-6 p-4">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold text-gray-800">Lista de Maestros</h2>
+    <a routerLink="/utl/agregar-maestro" class="text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5">
+      Agregar Maestro
+    </a>
+  </div>
+
+  <div class="mb-4">
+    <label class="block text-sm font-medium text-gray-700 mb-1">Filtrar por:</label>
+    <!-- Se agrega (input)="filtrarMaestros()" aquí -->
+    <input type="text" [(ngModel)]="listFilter" (input)="filtrarMaestros()" placeholder="Buscar maestro..." class="w-full p-2 border border-gray-300 rounded-lg">
+  </div>
+
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500">
+      <thead class="text-xs text-white uppercase bg-gray-700">
+        <tr>
+          <th scope="col" class="px-6 py-3">ID MAESTRO</th>
+          <th scope="col" class="px-6 py-3">NOMBRE</th>
+          <th scope="col" class="px-6 py-3">APATERNO</th>
+          <th scope="col" class="px-6 py-3">AMATERNO</th>
+          <th scope="col" class="px-6 py-3">CORREO</th>
+          <th scope="col" class="px-6 py-3 text-center">EDITAR</th>
+          <th scope="col" class="px-6 py-3 text-center">ELIMINAR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let maestro of dataSource" class="bg-white border-b hover:bg-gray-50">
+          <td class="px-6 py-4 font-medium text-gray-900">{{ maestro.idmaestro }}</td>
+          <td class="px-6 py-4">{{ maestro.nombre }}</td>
+          <td class="px-6 py-4">{{ maestro.apaterno }}</td>
+          <td class="px-6 py-4">{{ maestro.amaterno }}</td>
+          <td class="px-6 py-4">{{ maestro.correo }}</td>
+          <td class="px-6 py-4 text-center">
+            <a [routerLink]="['/utl/editar-maestro', maestro.idmaestro]" class="text-white bg-teal-600 hover:bg-teal-700 font-medium rounded-lg text-xs px-3 py-2">
+              Editar
+            </a>
+          </td>
+          <td class="px-6 py-4 text-center">
+            <button (click)="eliminarMaestro(maestro.idmaestro)" class="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-xs px-3 py-2">
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

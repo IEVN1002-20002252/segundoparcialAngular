@@ -1,0 +1,40 @@
+<div class="max-w-xl mx-auto mt-10 p-6 bg-white border border-gray-200 rounded-lg shadow-sm">
+  <h2 class="text-xl font-bold text-gray-800 mb-4">Agregar Nuevo Maestro</h2>
+  <p class="text-gray-600 mb-4">Formulario de registro de maestros.</p>
+
+  <form (ngSubmit)="registrarMaestro()" class="space-y-4">
+    <div>
+      <label class="block text-sm font-medium text-gray-700">ID Maestro</label>
+      <input type="number" [(ngModel)]="maestro.idmaestro" name="idmaestro" required class="w-full mt-1 p-2 border border-gray-300 rounded-lg">
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Nombre</label>
+      <input type="text" [(ngModel)]="maestro.nombre" name="nombre" required class="w-full mt-1 p-2 border border-gray-300 rounded-lg">
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Apellido Paterno</label>
+      <input type="text" [(ngModel)]="maestro.apaterno" name="apaterno" required class="w-full mt-1 p-2 border border-gray-300 rounded-lg">
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Apellido Materno</label>
+      <input type="text" [(ngModel)]="maestro.amaterno" name="amaterno" required class="w-full mt-1 p-2 border border-gray-300 rounded-lg">
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Correo</label>
+      <input type="email" [(ngModel)]="maestro.correo" name="correo" required class="w-full mt-1 p-2 border border-gray-300 rounded-lg">
+    </div>
+
+    <div class="flex space-x-4 pt-2">
+      <button type="submit" class="text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5">
+        Guardar Maestro
+      </button>
+      <button type="button" [routerLink]="['/utl/maestros']" class="text-white bg-gray-600 hover:bg-gray-700 font-medium rounded-lg text-sm px-5 py-2.5">
+        Regresar a la lista
+      </button>
+    </div>
+  </form>
+</div>
